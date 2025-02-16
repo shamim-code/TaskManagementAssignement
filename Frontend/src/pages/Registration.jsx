@@ -23,7 +23,7 @@ export default function Registration() {
       const response = await axios.post("https://taskmanagementbackend-65fp.onrender.com/api/auth/register", formData);
       if (response.data.success) {
         alert("Registration Successful!");
-        navigate("/login"); // Redirect to login page
+        navigate("/login");
       }
     } catch (err) {
       setError(err.response?.data?.message || "Registration failed!");
