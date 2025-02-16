@@ -39,7 +39,7 @@ const Profile = () => {
 
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/auth/profile",
+          "https://taskmanagementbackend-65fp.onrender.com/api/auth/profile",
           {
             headers: {
               Authorization: `Bearer ${token}`, // Send token in headers
@@ -68,7 +68,7 @@ const Profile = () => {
 
     try {
       const response = await axios.put(
-        "http://localhost:5000/api/auth/profile",
+        "https://taskmanagementbackend-65fp.onrender.com/api/auth/profile",
         updatedUser,
         {
           headers: {

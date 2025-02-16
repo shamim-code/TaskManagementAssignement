@@ -25,11 +25,14 @@ export default function Dashboard() {
     const fetchItems = async () => {
       try {
         const token = localStorage.getItem("token");
-        const response = await axios.get("http://localhost:5000/api/tasks", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
+        const response = await axios.get(
+          "https://taskmanagementbackend-65fp.onrender.com/api/tasks",
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
         setListItems(response.data);
       } catch (error) {
         console.error("Error fetching items:", error);
@@ -56,7 +59,7 @@ export default function Dashboard() {
       const token = localStorage.getItem("token");
 
       const response = await axios.post(
-        "http://localhost:5000/api/tasks",
+        "https://taskmanagementbackend-65fp.onrender.com/api/tasks",
         newTask,
         {
           headers: {
@@ -83,11 +86,14 @@ export default function Dashboard() {
 
     try {
       const token = localStorage.getItem("token");
-      await axios.delete(`http://localhost:5000/api/tasks/${taskId}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      await axios.delete(
+        `https://taskmanagementbackend-65fp.onrender.com/api/tasks/${taskId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
 
       setRefresh((prev) => !prev);
     } catch (error) {
@@ -125,7 +131,7 @@ export default function Dashboard() {
     try {
       const token = localStorage.getItem("token");
       await axios.put(
-        `http://localhost:5000/api/tasks/${editingTask._id}`,
+        `https://taskmanagementbackend-65fp.onrender.com/api/tasks/${editingTask._id}`,
         editingTask,
         {
           headers: {
@@ -161,9 +167,14 @@ export default function Dashboard() {
                   <a href="/profile">Profile</a>
                 </li>
                 <li className="px-4 py-2 hover:bg-gray-200 cursor-pointer">
-                  <a onClick={()=>{
-                    localStorage.removeItem("token")
-                  }} href="/login">Logout</a>
+                  <a
+                    onClick={() => {
+                      localStorage.removeItem("token");
+                    }}
+                    href="/login"
+                  >
+                    Logout
+                  </a>
                 </li>
               </ul>
             </div>
